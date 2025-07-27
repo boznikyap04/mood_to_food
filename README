@@ -1,0 +1,28 @@
+# LasallEats 🍽️
+An emotion-based food recommender built with Streamlit.
+
+Note:
+Before using the application, please get your own Gemini API key
+
+## 🛠️ Setup
+
+# (Optional) Create and activate virtual environment
+python -m venv venv
+source venv/bin/activate   # or venv\Scripts\activate on Windows
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Setup secrets
+
+1. Make a directory named ".streamlit"
+mkdir -p .streamlit
+nano .streamlit/secrets.toml
+
+2. Add this inside the secrets.toml file
+[api_keys]
+gemini = "YOUR API KEY HERE"
+
+# Run the app
+1. Run this in your terminal
+streamlit run main.py
