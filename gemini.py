@@ -18,8 +18,8 @@ def get_gemini_recommendation(df, emotion, excluded_allergens, excluded_cuisines
         cuisine_str = str(r['Cuisine']) if r['Cuisine'] else "Not specified"
         food_str = str(r['Food']) if r['Food'] and r['Food'] != '-' else "None"
         description = r['Description']
-        budget_min = r['Budget_Min']
-        budget_max = r['Budget_Max']
+        budget_min = r['BudgetMin']
+        budget_max = r['BudgetMax']
 
         restaurant_list += f"""
     Name: {name}
