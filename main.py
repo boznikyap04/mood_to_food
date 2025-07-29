@@ -101,13 +101,8 @@ with st.form("cuisine_form"):
 
 # Step 4: Generate Response
 st.markdown("---")
-all_inputs_ready = (
-    st.session_state['selected_emotion'] is not None and
-    st.session_state['submitted_allergens'] and
-    st.session_state['submitted_cuisine_preferences']
-)
 
-if all_inputs_ready:
+if st.session_state['selected_emotion'] is not None:
     if st.button("Suggest a restaurant based on mood, food, and preferences"):
         with st.spinner("Getting the best match for your mood..."):
             df = st.session_state['df']
