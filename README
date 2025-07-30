@@ -1,6 +1,8 @@
 # LasallEats 🍽️
 An emotion-based food recommender built with Streamlit.
 
+Web-app URL: https://lasalleats.streamlit.app
+
 Note:
 Before using the application, please get your own Gemini API key
 
@@ -26,3 +28,6 @@ gemini = "YOUR API KEY HERE"
 # Run the app
 1. Run this in your terminal
 streamlit run main.py
+
+
+
