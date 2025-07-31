@@ -104,25 +104,22 @@ with st.form("cuisine_form"):
 
 # Step 4: Generate Response
 st.markdown("---")
+all_inputs_ready = (
+    st.session_state['selected_emotion'] is not None and
+    st.session_state['submitted_allergens'] and
+    st.session_state['submitted_cuisine_preferences']
+)
 
-if st.session_state['selected_emotion'] is not None:
-    if st.session_state['submitted_cuisine_preferences'] is True and st.session_state['submitted_allergens'] is True:
-        if st.button("Suggest a restaurant based on mood, food, and preferences"):
-            with st.spinner("Getting the best match for your mood..."):
-                df = st.session_state['df']
-                selected_emotion = st.session_state['selected_emotion']
-                excluded_allergens = st.session_state['selected_allergens']
-                excluded_cuisines = st.session_state['excluded_cuisines']
-                response = get_gemini_recommendation(df, selected_emotion, excluded_allergens, excluded_cuisines, gemini_key)
-                display_gemini_selected_restaurant(response, selected_emotion, df)
+if all_inputs_ready:
+    if st.button("Suggest a restaurant based on mood, food, and preferences"):
+        with st.spinner("Getting the best match for your mood..."):
+            df = st.session_state['df']
+            selected_emotion = st.session_state['selected_emotion']
+            excluded_allergens = st.session_state['selected_allergens']
+            excluded_cuisines = st.session_state['excluded_cuisines']
+            response = get_gemini_recommendation(df, selected_emotion, excluded_allergens, excluded_cuisines, gemini_key)
+            display_gemini_selected_restaurant(response, selected_emotion, df)
 
-    else:
-        st.button(
-            "Suggest recommended restaurant based on mood, food, and preferences",
-            key="suggest_button_disabled",
-            disabled=True,
-            help="Please ensure you have filled in all the previous details"
-        )
 else:
     st.button(
         "Suggest recommended restaurant based on mood, food, and preferences",
