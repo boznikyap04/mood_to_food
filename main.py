@@ -34,6 +34,10 @@ def set_allergens(allergens):
     st.session_state['selected_allergens'] = [key for key, val in allergens.items() if val]
     st.session_state['submitted_allergens'] = True
 
+def set_cuisines(cuisines):
+    st.session_state['excluded_cuisines'] = [k for k, v in cuisine_checks.items() if v]
+    st.session_state['submitted_cuisine_preferences'] = True
+
 # Title
 st.markdown("""
 # 🟢 **LasallEats**  
@@ -94,15 +98,14 @@ with st.form("cuisine_form"):
         for cuisine in cuisines
     }
 
-    if st.form_submit_button("Set Cuisine Preferences"):
-        st.session_state['excluded_cuisines'] = [k for k, v in cuisine_checks.items() if v]
-        st.session_state['submitted_cuisine_preferences'] = True
+    submitted =  st.form_submit_button("Set Cuisine Preferences", on_click=set_cuisines(cuisine_checks))
+    if submitted:
         st.success("Cuisine preferences saved!")
 
 # Step 4: Generate Response
 st.markdown("---")
 
-if st.session_state['selected_emotion'] is not None:
+if st.session_state['selected_emotion'] is not None and st.session_state['submitted_allergens'] is not False and st.session_state['submitted_cuisine_preferences'] is not False:
     if st.button("Suggest a restaurant based on mood, food, and preferences"):
         with st.spinner("Getting the best match for your mood..."):
             df = st.session_state['df']
