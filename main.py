@@ -98,7 +98,7 @@ with st.form("cuisine_form"):
         for cuisine in cuisines
     }
 
-    submitted =  st.form_submit_button("Set Cuisine Preferences", on_click=set_cuisines(cuisine_checks))
+    submitted = st.form_submit_button("Set Cuisine Preferences", on_click=set_cuisines(cuisine_checks))
     if submitted:
         st.success("Cuisine preferences saved!")
 
@@ -106,7 +106,7 @@ with st.form("cuisine_form"):
 st.markdown("---")
 
 if st.session_state['selected_emotion'] is not None:
-    if st.session_state['submitted_cuisine_preferences'] is not False and st.session_state['submitted_allergens'] is not False:
+    if st.session_state['submitted_cuisine_preferences'] is True and st.session_state['submitted_allergens'] is True:
         if st.button("Suggest a restaurant based on mood, food, and preferences"):
             with st.spinner("Getting the best match for your mood..."):
                 df = st.session_state['df']
