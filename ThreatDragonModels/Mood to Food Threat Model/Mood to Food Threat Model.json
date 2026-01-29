@@ -789,26 +789,59 @@
               "threats": [
                 {
                   "id": "1d3b3c96-c823-434e-a4ca-b5a2b2adecdb",
-                  "title": "SQL Injection Attack",
+                  "title": "LDAP Injection",
                   "status": "Open",
                   "severity": "Critical",
                   "type": "Tampering",
-                  "description": "Provide a description for this threat",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "description": "LDAP injection is possible, as the user authentication is verified using an LDAP query.",
+                  "mitigation": "",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 1,
+                  "score": ""
+                },
+                {
+                  "id": "85704c34-82dd-4253-8d8a-b937e0c28d49",
+                  "title": "Missing LDAP Write Logging",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Repudiation",
+                  "description": "LDAP claims that it did not write data received from an entity on the other side of the trust boundary.",
+                  "mitigation": "Consider using logging or auditing to record the source, time and a summary of the received data.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 16,
+                  "score": ""
+                },
+                {
+                  "id": "1624a902-88ee-4259-b883-a915d2a1e258",
+                  "title": "Unauthorized Data Access in LDAP Directory",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "Improper data protection of LDAP can allow an attacker to read information not intended for disclosure.",
+                  "mitigation": "Review authorization settings",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 17,
                   "score": ""
                 }
               ],
               "threatFrequency": {
                 "spoofing": 0,
-                "tampering": 1,
-                "repudiation": 0,
-                "informationDisclosure": 0,
+                "tampering": 2,
+                "repudiation": 1,
+                "informationDisclosure": 1,
                 "denialOfService": 0,
                 "elevationOfPrivilege": 0
               }
+            },
+            "tools": {
+              "items": [
+                "boundary",
+                "button-remove"
+              ],
+              "name": null
             }
           },
           {
@@ -941,23 +974,29 @@
                   "new": false,
                   "number": 2,
                   "score": ""
+                },
+                {
+                  "id": "9f76320e-9465-4c55-ba1d-21a2a0d25c1f",
+                  "title": "Unverified SQL Database Data Writes",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Repudiation",
+                  "description": "The SQL Database claims that it did not write data received from an entity on the other side of the trust boundary.",
+                  "mitigation": "Consider using logging or auditing to record the source, time and a summary of the received data.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 15,
+                  "score": ""
                 }
               ],
               "threatFrequency": {
                 "spoofing": 1,
                 "tampering": 1,
-                "repudiation": 0,
+                "repudiation": 1,
                 "informationDisclosure": 0,
                 "denialOfService": 0,
                 "elevationOfPrivilege": 0
               }
-            },
-            "tools": {
-              "items": [
-                "boundary",
-                "button-remove"
-              ],
-              "name": null
             }
           },
           {
@@ -1405,6 +1444,6 @@
     ],
     "diagramTop": 1,
     "reviewer": "Kerwin Tang",
-    "threatTop": 14
+    "threatTop": 17
   }
 }
